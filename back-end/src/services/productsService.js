@@ -10,6 +10,11 @@ const getById = async (id) => {
   return product;
 };
 
+const findByName = async (name) => {
+  const product = await Product.findOne({ where: { name } });
+  return product;
+};
+
 const createProduct = async (name, description, price) => {
   const newProduct = await Product.create({ name, description, price });
   return newProduct;
@@ -28,6 +33,7 @@ const deleteProduct = async (id) => {
 module.exports = {
   findAll,
   getById,
+  findByName,
   createProduct,
   updateProduct,
   deleteProduct,
