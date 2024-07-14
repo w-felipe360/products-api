@@ -1,18 +1,18 @@
 version: "3.7"
 services:
   node:
-    build: ./backend
+    build: ./back-end
     ports:
       - "3000:3000"
     volumes:
-      - ./backend/src:/app/src 
+      - ./back-end/src:/app/src 
     env_file:
-      - ./backend/.env
+      - ./back-end/.env
     depends_on:
       - db
   db:
     image: mysql:8.0.23
     env_file:
-      - ./backend/.env
+      - ./back-end/.env
     ports:
       - "3306:3306"
