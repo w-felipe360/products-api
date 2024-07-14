@@ -7,5 +7,5 @@ const defaultPort = 3000;
 const PORT = process.env.PORT || defaultPort;
 
 app.listen(PORT, () => {
-  console.log(`Escutando na porta ${PORT}`);
+  console.log(`Watching in port ${PORT}`);
 });
