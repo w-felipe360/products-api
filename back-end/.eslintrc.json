@@ -1,0 +1,5 @@
+{
+    "extends": "@trybe/eslint-config-frontend",
+    "ignorePatterns": ["src/migrations/*", "src/seeders/*", "src/models/*"]
+}
+  
