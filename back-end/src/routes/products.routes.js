@@ -20,7 +20,11 @@ productsRouter.post(
   productsController.createProduct,
 );
 
-productsRouter.put('/:id', productsController.udpateProductById);
+productsRouter.put(
+  '/:id',
+  productMiddlewares.verifyUserOwnership,
+  productsController.udpateProductById,
+);
 
 productsRouter.delete(
   '/:id',
