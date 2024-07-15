@@ -9,9 +9,6 @@ const readProducts = async (_req, res) => {
 const readProductById = async (req, res) => {
   const { id } = req.params;
   const product = await productsService.getById(id);
-  if (product.error) {
-    return res.status(httpStatus.NOT_FOUND).json(result);
-  }
   return res.status(httpStatus.OK).json(product);
 };
 
@@ -30,8 +27,7 @@ const udpateProductById = async (req, res) => {
 
 const deleteProductById = async (req, res) => {
   const { id } = req.params;
-  await productsService
-    .deleteProduct(id);
+  await productsService.deleteProduct(id);
   return res.status(httpStatus.OK).json({ message: 'Product deleted successfully' });
 };
 
