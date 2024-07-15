@@ -1,6 +1,6 @@
 const schema = require('../validations/productValidationSchema');
 const httpStatus = require('../utils/httpStatusCodes');
-const { findByName, getById } = require('../services/productsService');
+const { findByName, getById } = require('../services/products.service');
 
 const fieldValidation = async (req, res, next) => {
   const validation = schema.validate(req.body);

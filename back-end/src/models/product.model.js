@@ -15,6 +15,13 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
     description: DataTypes.STRING,
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
   });
+  product.associate = (models) => {
+    product.belongsTo(models.User, { foreignKey: 'userId', as: 'user' });
+  };
   return product;
 };
