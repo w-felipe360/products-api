@@ -15,9 +15,15 @@ const findByName = async (name) => {
   return product;
 };
 
-const createProduct = async (name, description, price) => {
-  const newProduct = await Product.create({ name, description, price });
-  return newProduct;
+const createProduct = async (data, user) => {
+  const newProduct = await Product.create({ ...data, userId: user.id });
+  const response = {
+    name: newProduct.name,
+    description: newProduct.description,
+    price: newProduct.price,
+    userId: user.name,
+  };
+  return response;
 };
 const updateProduct = async (id, name, description, price) => {
   await Product.update({ name, description, price }, {

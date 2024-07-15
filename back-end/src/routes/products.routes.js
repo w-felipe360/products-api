@@ -1,8 +1,11 @@
 const express = require('express');
 const productsController = require('../controllers/products.controller');
 const productMiddlewares = require('../middlewares/products.middlewares');
+const { authorizationToken } = require('../middlewares/auth.middleware');
 
 const productsRouter = express.Router();
+
+productsRouter.use(authorizationToken);
 
 productsRouter.use('/:id', productMiddlewares.verifyIdExists);
 
@@ -19,6 +22,10 @@ productsRouter.post(
 
 productsRouter.put('/:id', productsController.udpateProductById);
 
-productsRouter.delete('/:id', productsController.deleteProductById);
+productsRouter.delete(
+  '/:id',
+  productMiddlewares.verifyUserOwnership,
+  productsController.deleteProductById,
+);
 
 module.exports = productsRouter;

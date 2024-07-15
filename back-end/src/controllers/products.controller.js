@@ -13,8 +13,8 @@ const readProductById = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { name, description, price } = req.body;
-  const newProduct = await productsService.createProduct(name, description, price);
+  const { user } = req;
+  const newProduct = await productsService.createProduct(req.body, user);
   return res.status(httpStatus.OK).json(newProduct);
 };
 
