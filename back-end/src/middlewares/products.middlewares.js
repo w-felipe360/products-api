@@ -25,7 +25,7 @@ const verifyIdExists = async (req, res, next) => {
   const product = await getById(id);
   if (!product) {
     return res.status(httpStatus.NOT_FOUND)
-      .json({ message: 'Product don\'t exist' });
+      .json({ message: 'Product does not exist' });
   }
   next();
 };
