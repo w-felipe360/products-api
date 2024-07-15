@@ -32,11 +32,20 @@ const deleteUser = async (id) => {
   const user = await User.findByPk(+id);
   await user.destroy();
 };
+const updateUser = async (id, updates) => {
+  const user = await User.findByPk(+id);
+  if (!user) {
+    throw new Error('User not found');
+  }
+  await user.update(updates);
+  return user;
+};
 
 module.exports = {
   findAll,
   getById,
   createUser,
+  updateUser,
   login,
   deleteUser,
 };

@@ -38,7 +38,7 @@ const hashPassword = async (req, res, next) => {
     next(error);
   }
 };
-const verifyUserDelete = async (req, res, next) => {
+const verifyUserUpdate = async (req, res, next) => {
   const { id } = req.user;
   const me = await User.findOne({ where: { id } });
   if (!me) {
@@ -50,7 +50,7 @@ const verifyUserDelete = async (req, res, next) => {
 
 module.exports = {
   checkEmailUniqueness,
-  verifyUserDelete,
+  verifyUserUpdate,
   verifyUserExists,
   hashPassword,
   userFieldValidation,

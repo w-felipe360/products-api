@@ -35,10 +35,20 @@ const deleteUser = async (req, res) => {
     res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: error.message });
   }
 };
+const updateUser = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const updatedUser = await usersService.updateUser(id, req.body);
+    res.status(httpStatus.OK).json({ message: 'user updated to:', updatedUser });
+  } catch (error) {
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: error.message });
+  }
+};
 module.exports = {
   readUsers,
   getUserById,
   createUser,
+  updateUser,
   loginUser,
   deleteUser,
 };

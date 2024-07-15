@@ -3,7 +3,7 @@ const { authorizationToken } = require('../middlewares/auth.middleware');
 const usersControllers = require('../controllers/users.controller');
 const { hashPassword, checkEmailUniqueness,
   verifyUserExists, userFieldValidation,
-  verifyUserDelete } = require('../middlewares/users.middleware');
+  verifyUserUpdate } = require('../middlewares/users.middleware');
 
 const usersRouter = express.Router();
 
@@ -24,8 +24,14 @@ usersRouter.post(
 usersRouter.delete(
   '/:id',
   authorizationToken,
-  verifyUserDelete,
+  verifyUserUpdate,
   usersControllers.deleteUser,
+);
+usersRouter.put(
+  '/:id',
+  authorizationToken,
+  verifyUserUpdate,
+  usersControllers.updateUser,
 );
 
 module.exports = usersRouter;
