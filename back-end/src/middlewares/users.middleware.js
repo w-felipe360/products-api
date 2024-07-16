@@ -23,7 +23,7 @@ const verifyUserExists = async (req, res, next) => {
   const { email } = req.body;
   const user = await User.findOne({ where: { email } });
   if (!user) {
-    return res.status(httpStatus.NOT_FOUND).json({ error: 'User does not exist' });
+    return res.status(httpStatus.NOT_FOUND).json({ error: 'User does not exist.' });
   }
   next();
 };
