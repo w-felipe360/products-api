@@ -1,12 +1,13 @@
 const { Product } = require('../models');
+const productQueryOptions = require('../utils/productQueryOptions');
 
 const findAll = async () => {
-  const products = await Product.findAll();
+  const products = await Product.findAll(productQueryOptions);
   return products;
 };
 
 const getById = async (id) => {
-  const product = await Product.findByPk(+id);
+  const product = await Product.findByPk(+id, productQueryOptions);
   return product;
 };
 
