@@ -12,9 +12,8 @@ const getUserById = async (req, res) => {
 };
 const createUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const token = await usersService.createUser({ name, email, password });
-    res.status(httpStatus.CREATED).json({ token });
+    await usersService.createUser(req);
+    res.status(httpStatus.CREATED).json({ message: 'User created successfully.' });
   } catch (error) {
     res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ message: error.message });
   }

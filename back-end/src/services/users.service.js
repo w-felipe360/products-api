@@ -15,10 +15,9 @@ const getById = async (id) => {
   return user;
 };
 
-const createUser = async ({ name, email, password }) => {
-  const newUser = await User.create({ name, email, password });
-  const token = createToken(newUser.dataValues);
-  return token;
+const createUser = async (req) => {
+  const { name, email, password } = req.body;
+  await User.create({ name, email, password });
 };
 
 const login = async ({ email, password }) => {
