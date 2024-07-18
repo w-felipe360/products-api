@@ -33,15 +33,15 @@ Este projeto é uma aplicação fullstack composta por um back-end em Node.js e 
     ```bash
     cd products-api
     ```
-3. Crie um arquivo env no diretório back-end e configure as variáveis de ambiente no arquivo `.env`:
+3. Crie um arquivo env e configure as variáveis de ambiente no arquivo `.env`:
     ```env
     PORT=3000
-    MYSQL_HOST=localhost
-    MYSQL_USER=root
+    MYSQL_HOST=db
+    MYSQL_USER=user
     MYSQL_PASSWORD=password
     MYSQL_ROOT_PASSWORD=password
-    MYSQL_DB=products_db
-    JWT_SECRET=sua_chave_secreta
+    MYSQL_DATABASE=products_db
+    JWT_SECRET=secret
     ```
 
 4. faça o build com o docker-compose:
