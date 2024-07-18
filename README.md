@@ -60,6 +60,8 @@ Este projeto é uma aplicação fullstack composta por um back-end em Node.js e 
     npx sequelize-cli db:seed:all
     ```
 
+> **Observação:** O front-end ainda não foi finalizado.
+
 ## Estrutura do Projeto
 
 ### Back-end
