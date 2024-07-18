@@ -6,6 +6,7 @@ const { authorizationToken } = require('../middlewares/auth.middleware');
 const productsRouter = express.Router();
 
 productsRouter.use(authorizationToken);
+productsRouter.get('/user', authorizationToken, productsController.readProductsByUserId);
 
 productsRouter.use('/:id', productMiddlewares.verifyIdExists);
 

@@ -23,7 +23,7 @@ const loginUser = async (req, res) => {
     const token = await usersService.login(req.body);
     res.status(httpStatus.OK).json({ token });
   } catch (error) {
-    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: error.message });
+    res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ message: error.message });
   }
 };
 const deleteUser = async (req, res) => {
@@ -37,8 +37,8 @@ const deleteUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const updatedUser = await usersService.updateUser(id, req.body);
-    res.status(httpStatus.OK).json({ message: 'user updated to:', updatedUser });
+    await usersService.updateUser(id, req.body);
+    res.status(httpStatus.OK).json({ message: 'name updated!' });
   } catch (error) {
     res.status(httpStatus.INTERNAL_SERVER_ERROR).json({ error: error.message });
   }

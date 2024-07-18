@@ -11,6 +11,16 @@ const getById = async (id) => {
   return product;
 };
 
+const getByUserId = async (id) => {
+  console.log(id);
+  const products = await Product.findAll({
+    where: {
+      userId: id,
+    },
+  });
+  return products;
+};
+
 const findByName = async (name) => {
   const product = await Product.findOne({ where: { name } });
   return product;
@@ -22,7 +32,7 @@ const createProduct = async (data, user) => {
     name: newProduct.name,
     description: newProduct.description,
     price: newProduct.price,
-    userId: user.name,
+    userId: user.id,
   };
   return response;
 };
@@ -41,6 +51,7 @@ module.exports = {
   findAll,
   getById,
   findByName,
+  getByUserId,
   createProduct,
   updateProduct,
   deleteProduct,

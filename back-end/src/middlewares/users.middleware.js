@@ -3,8 +3,24 @@ const { User } = require('../models');
 const httpStatus = require('../utils/httpStatusCodes');
 const schema = require('../validations/userValidationSchema');
 
-const userFieldValidation = async (req, res, next) => {
-  const validation = schema.validate(req.body);
+const createLoginValidation = async (req, res, next) => {
+  const validation = schema.userSchema.validate(req.body);
+  if (validation.error) {
+    return res.status(httpStatus.BAD_REQUEST)
+      .json({ message: validation.error.details[0].message });
+  }
+  next();
+};
+const userLoginValidation = async (req, res, next) => {
+  const validation = schema.loginSchema.validate(req.body);
+  if (validation.error) {
+    return res.status(httpStatus.BAD_REQUEST)
+      .json({ message: validation.error.details[0].message });
+  }
+  next();
+};
+const editUserValidation = async (req, res, next) => {
+  const validation = schema.editUserSchema.validate(req.body);
   if (validation.error) {
     return res.status(httpStatus.BAD_REQUEST)
       .json({ message: validation.error.details[0].message });
@@ -23,7 +39,10 @@ const verifyUserExists = async (req, res, next) => {
   const { email } = req.body;
   const user = await User.findOne({ where: { email } });
   if (!user) {
-    return res.status(httpStatus.NOT_FOUND).json({ error: 'User does not exist.' });
+    const erro = new Error('User does not exist');
+    erro.message = 'User does not exist';
+    console.log('oq vem?', erro);
+    return res.status(httpStatus.NOT_FOUND).json(erro);
   }
   next();
 };
@@ -50,8 +69,10 @@ const verifyUserUpdate = async (req, res, next) => {
 
 module.exports = {
   checkEmailUniqueness,
+  userLoginValidation,
+  editUserValidation,
   verifyUserUpdate,
   verifyUserExists,
   hashPassword,
-  userFieldValidation,
+  createLoginValidation,
 };

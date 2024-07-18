@@ -2,8 +2,9 @@ const express = require('express');
 const { authorizationToken } = require('../middlewares/auth.middleware');
 const usersControllers = require('../controllers/users.controller');
 const { hashPassword, checkEmailUniqueness,
-  verifyUserExists, userFieldValidation,
-  verifyUserUpdate } = require('../middlewares/users.middleware');
+  createLoginValidation,
+  verifyUserUpdate, editUserValidation,
+  userLoginValidation } = require('../middlewares/users.middleware');
 
 const usersRouter = express.Router();
 
@@ -11,14 +12,14 @@ usersRouter.get('/', authorizationToken, usersControllers.readUsers);
 usersRouter.get('/:id', authorizationToken, usersControllers.getUserById);
 usersRouter.post(
   '/',
-  userFieldValidation,
+  createLoginValidation,
   checkEmailUniqueness,
   hashPassword,
   usersControllers.createUser,
 );
 usersRouter.post(
   '/login',
-  verifyUserExists,
+  userLoginValidation,
   usersControllers.loginUser,
 );
 usersRouter.delete(
@@ -29,6 +30,7 @@ usersRouter.delete(
 );
 usersRouter.put(
   '/:id',
+  editUserValidation,
   authorizationToken,
   verifyUserUpdate,
   usersControllers.updateUser,

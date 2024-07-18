@@ -8,8 +8,14 @@ const readProducts = async (_req, res) => {
 
 const readProductById = async (req, res) => {
   const { id } = req.params;
-  const product = await productsService.getById(id);
+  const product = await productsService.getByUserId(id);
   return res.status(httpStatus.OK).json(product);
+};
+
+const readProductsByUserId = async (req, res) => {
+  const { id } = req.user;
+  const products = await productsService.getByUserId(id);
+  return res.status(httpStatus.OK).json(products);
 };
 
 const createProduct = async (req, res) => {
@@ -33,6 +39,7 @@ const deleteProductById = async (req, res) => {
 
 module.exports = {
   readProducts,
+  readProductsByUserId,
   readProductById,
   createProduct,
   udpateProductById,

@@ -22,6 +22,9 @@ const createUser = async (req) => {
 
 const login = async ({ email, password }) => {
   const user = await User.findOne({ where: { email } });
+  if (!user) {
+    throw new Error('User does not exist');
+  }
   await comparePassword(password, user.password);
   const token = createToken(user.dataValues);
   return token;
@@ -37,7 +40,7 @@ const updateUser = async (id, updates) => {
     throw new Error('User not found');
   }
   await user.update(updates);
-  return user;
+  return user.name;
 };
 
 module.exports = {
