@@ -33,7 +33,7 @@ Este projeto é uma aplicação fullstack composta por um back-end em Node.js e 
     ```bash
     cd products-api
     ```
-3. Crie um arquivo env e configure as variáveis de ambiente no arquivo `.env` do diretório back-end:
+3. Crie um arquivo env no diretório back-end e configure as variáveis de ambiente no arquivo `.env`:
     ```env
     PORT=3000
     MYSQL_HOST=localhost
