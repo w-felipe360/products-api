@@ -46,7 +46,7 @@ Este projeto é uma aplicação fullstack composta por um back-end em Node.js e 
 
 4. faça o build com o docker-compose:
     ```bash
-    docker compose --build
+    docker compose up --build
     ```
 
 
