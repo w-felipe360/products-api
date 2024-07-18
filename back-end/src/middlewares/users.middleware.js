@@ -41,7 +41,6 @@ const verifyUserExists = async (req, res, next) => {
   if (!user) {
     const erro = new Error('User does not exist');
     erro.message = 'User does not exist';
-    console.log('oq vem?', erro);
     return res.status(httpStatus.NOT_FOUND).json(erro);
   }
   next();
