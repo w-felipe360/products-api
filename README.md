@@ -50,7 +50,7 @@ Este projeto é uma aplicação fullstack composta por um back-end em Node.js e 
     ```
 
 
-5. Execute o banco de dados com o script do sequelize:
+5. Acesse o terminal do container node e execute o banco de dados com o script do sequelize:
     ```bash
     npm run prestart
     ```
