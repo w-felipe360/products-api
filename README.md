@@ -26,7 +26,7 @@ Este projeto é uma aplicação fullstack composta por um back-end em Node.js e 
 
 1. Clone o repositório:
     ```bash
-    git clone https://github.com/seu-usuario/seu-repositorio.git
+    git clone https://github.com/w-felipe360/products-api.git
     ```
 
 2. Navegue até a pasta do projeto:
