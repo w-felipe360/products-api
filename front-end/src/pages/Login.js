@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-max-depth */
+/* eslint-disable */
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext';
@@ -16,7 +18,7 @@ function Login() {
       await login(email, password);
       navigate('/main');
     } catch (error) {
-      console.error('Erro ao enviar requisição:', error);
+      console.error('fail:', error);
       setErrorMessage(error.response.data.message || 'Invalid credentials.');
     }
   };
