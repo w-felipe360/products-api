@@ -12,7 +12,6 @@ const getById = async (id) => {
 };
 
 const getByUserId = async (id) => {
-  console.log(id);
   const products = await Product.findAll({
     where: {
       userId: id,
