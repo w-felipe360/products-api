@@ -7,13 +7,13 @@ services:
     volumes:
       - ./back-end/src:/app/src 
     env_file:
-      - ./back-end/.env
+      - ./.env
     depends_on:
       - db
   db:
     image: mysql:8.0.23
     env_file:
-      - ./back-end/.env
+      - ./.env
     ports:
       - "3306:3306"
   frontend:
