@@ -6,3 +6,5 @@ O front-end está atualmente em construção.
 - Edição de produtos
 - Remoção de produtos
 - Edição e remoção de usuários
+
+> **Observação:** Talvez seja necessário rodar o front localmente.
