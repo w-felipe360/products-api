@@ -1,25 +1,15 @@
-/* eslint-disable */
-import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
-import NotFound from './pages/NotFound';
-import Header from './components/Header';
-import Register from './pages/Register';
+import React, { useContext } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import PublicRoutes from './routes/public.routes';
+import PrivateRoutes from './routes/private.routes';
+import { AuthContext } from './contexts/AuthContext';
 
 function App() {
+  const { auth } = useContext(AuthContext);
   return (
-    <div >
-      <Router>
-        <Routes>
-          <Route path="/" element={ <Login /> } />
-          <Route path="/register" element={ <Register /> } />
-          <Route path="/home" element={<Header />} />
-          {/* <Route path="/posts/:id" element={ <PostDetails /> } /> */}
-          {/* <Route path="/users" element={ <Users /> } /> */}
-          <Route path="*" element={ <NotFound /> } />
-        </Routes>
-      </Router>
-    </div>
+    <BrowserRouter>
+      {auth ? <PrivateRoutes /> : <PublicRoutes />}
+    </BrowserRouter>
   );
 }
 
